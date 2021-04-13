@@ -1,0 +1,81 @@
+body {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--dark-gray-900);
+}
+
+p {
+  margin: 0;
+}
+
+.clock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 11rem;
+  font-size: 3rem;
+}
+
+.colon {
+  color: white;
+}
+
+#minutes-hundreds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray-500);
+  transition: transform 0.15s ease-in-out;
+}
+
+#minutes-tens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray-500);
+  transition: transform 0.15s ease-in-out;
+}
+
+#seconds-hundreds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray-500);
+  transition: transform 0.15s ease-in-out;
+}
+
+#seconds-tens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray-500);
+  transition: transform 0.15s ease-in-out;
+}
+
+.number {
+  transition: color 0.15s ease-in-out;
+}
+
+.active {
+  color: white;
+}
+
+:root {
+  --dark-gray-50: #f7f7f7;
+  --dark-gray-100: #eeeeee;
+  --dark-gray-200: #e2e2e2;
+  --dark-gray-300: #d0d0d0;
+  --dark-gray-400: #ababab;
+  --dark-gray-500: #8a8a8a;
+  --dark-gray-600: #636363;
+  --dark-gray-700: #505050;
+  --dark-gray-800: #323232;
+  --dark-gray-900: #121212;
+}
