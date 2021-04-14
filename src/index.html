@@ -8,50 +8,101 @@
   </head>
   <body>
     <div class="clock">
-      <div id="minutes-tens" style="transform: translateY(150px)">
-        <p id="minutes-tens__150" class="number active">0</p>
-        <p id="minutes-tens__90" class="number">1</p>
-        <p id="minutes-tens__30" class="number">2</p>
-        <p id="minutes-tens__-30" class="number">3</p>
-        <p id="minutes-tens__-90" class="number">4</p>
-        <p id="minutes-tens__-150" class="number">5</p>
+      <div id="minutes-left" data-currentnum="0">
+        <p id="minutes-left__0" class="number active">0</p>
+        <p id="minutes-left__1" class="number">1</p>
+        <p id="minutes-left__2" class="number">2</p>
+        <p id="minutes-left__3" class="number">3</p>
+        <p id="minutes-left__4" class="number">4</p>
+        <p id="minutes-left__5" class="number">5</p>
       </div>
-      <div id="minutes-hundreds" style="transform: translateY(270px)">
-        <p id="minutes-hundreds__270" class="number active">0</p>
-        <p id="minutes-hundreds__210" class="number">1</p>
-        <p id="minutes-hundreds__150" class="number">2</p>
-        <p id="minutes-hundreds__90" class="number">3</p>
-        <p id="minutes-hundreds__30" class="number">4</p>
-        <p id="minutes-hundreds__-30" class="number">5</p>
-        <p id="minutes-hundreds__-90" class="number">6</p>
-        <p id="minutes-hundreds__-150" class="number">7</p>
-        <p id="minutes-hundreds__-210" class="number">8</p>
-        <p id="minutes-hundreds__-270" class="number">9</p>
+      <div id="minutes-right" data-currentnum="0">
+        <p id="minutes-right__0" class="number active">0</p>
+        <p id="minutes-right__1" class="number">1</p>
+        <p id="minutes-right__2" class="number">2</p>
+        <p id="minutes-right__3" class="number">3</p>
+        <p id="minutes-right__4" class="number">4</p>
+        <p id="minutes-right__5" class="number">5</p>
+        <p id="minutes-right__6" class="number">6</p>
+        <p id="minutes-right__7" class="number">7</p>
+        <p id="minutes-right__8" class="number">8</p>
+        <p id="minutes-right__9" class="number">9</p>
       </div>
       <p class="colon">:</p>
-      <div id="seconds-tens" style="transform: translateY(150px)">
-        <p id="seconds-tens__150" class="number active">0</p>
-        <p id="seconds-tens__90" class="number">1</p>
-        <p id="seconds-tens__30" class="number">2</p>
-        <p id="seconds-tens__-30" class="number">3</p>
-        <p id="seconds-tens__-90" class="number">4</p>
-        <p id="seconds-tens__-150" class="number">5</p>
+      <div id="seconds-left" data-currentnum="0">
+        <p id="seconds-left__0" class="number active">0</p>
+        <p id="seconds-left__1" class="number">1</p>
+        <p id="seconds-left__2" class="number">2</p>
+        <p id="seconds-left__3" class="number">3</p>
+        <p id="seconds-left__4" class="number">4</p>
+        <p id="seconds-left__5" class="number">5</p>
       </div>
-      <div id="seconds-hundreds" style="transform: translateY(270px)">
-        <p id="seconds-hundreds__270" class="number active">0</p>
-        <p id="seconds-hundreds__210" class="number">1</p>
-        <p id="seconds-hundreds__150" class="number">2</p>
-        <p id="seconds-hundreds__90" class="number">3</p>
-        <p id="seconds-hundreds__30" class="number">4</p>
-        <p id="seconds-hundreds__-30" class="number">5</p>
-        <p id="seconds-hundreds__-90" class="number">6</p>
-        <p id="seconds-hundreds__-150" class="number">7</p>
-        <p id="seconds-hundreds__-210" class="number">8</p>
-        <p id="seconds-hundreds__-270" class="number">9</p>
+      <div id="seconds-right" data-currentnum="0">
+        <p id="seconds-right__0" class="number active">0</p>
+        <p id="seconds-right__1" class="number">1</p>
+        <p id="seconds-right__2" class="number">2</p>
+        <p id="seconds-right__3" class="number">3</p>
+        <p id="seconds-right__4" class="number">4</p>
+        <p id="seconds-right__5" class="number">5</p>
+        <p id="seconds-right__6" class="number">6</p>
+        <p id="seconds-right__7" class="number">7</p>
+        <p id="seconds-right__8" class="number">8</p>
+        <p id="seconds-right__9" class="number">9</p>
       </div>
     </div>
     <div class="controlls">
-      <button id="set__10">+10</button>
+      <div class="set-clock">
+        <button id="plus-1" class="btn">+1</button>
+        <button id="set__10" class="btn">10</button>
+        <button id="minus-1" class="btn">-1</button>
+      </div>
+      <div class="control-clock">
+        <button id="start" class="btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="36px"
+            viewBox="0 0 24 24"
+            width="36px"
+            fill="currentColor"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M8 5v14l11-7L8 5z" />
+          </svg>
+        </button>
+        <button id="stop" class="btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="36px"
+            viewBox="0 0 24 24"
+            width="36px"
+            fill="currentColor"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        </button>
+        <button id="reset" class="btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            enable-background="new 0 0 24 24"
+            height="36px"
+            viewBox="0 0 24 24"
+            width="36px"
+            fill="currentColor"
+          >
+            <g>
+              <rect fill="none" height="24" width="24" />
+              <rect fill="none" height="24" width="24" />
+              <rect fill="none" height="24" width="24" />
+            </g>
+            <g>
+              <path
+                d="M12,5V1L7,6l5,5V7c3.31,0,6,2.69,6,6s-2.69,6-6,6s-6-2.69-6-6H4c0,4.42,3.58,8,8,8s8-3.58,8-8S16.42,5,12,5z"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
     </div>
     <script defer src="timer.js"></script>
   </body>
