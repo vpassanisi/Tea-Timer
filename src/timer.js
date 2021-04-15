@@ -19,17 +19,13 @@ const clock = {
   setMinutesLeft(number = 0) {
     const numHeight = this.secondsRight.firstElementChild.offsetHeight;
 
-    this.minutesLeft
-      .querySelector(`#minutes-left__${this.currentML()}`)
-      .classList.remove("active");
+    this.minutesLeft.querySelector(`#minutes-left__${this.currentML()}`).classList.remove("active");
 
     const update = (numHeight * 5) / 2 - numHeight * number;
     this.minutesLeft.style.transform = `translateY(${update}px)`;
     this.minutesLeft.dataset.currentnum = number;
 
-    this.minutesLeft
-      .querySelector(`#minutes-left__${number}`)
-      .classList.add("active");
+    this.minutesLeft.querySelector(`#minutes-left__${number}`).classList.add("active");
   },
   setMinutesRight(number = 0) {
     const numHeight = this.secondsRight.firstElementChild.offsetHeight;
@@ -42,24 +38,18 @@ const clock = {
     this.minutesRight.style.transform = `translateY(${update}px)`;
     this.minutesRight.dataset.currentnum = number;
 
-    this.minutesRight
-      .querySelector(`#minutes-right__${number}`)
-      .classList.add("active");
+    this.minutesRight.querySelector(`#minutes-right__${number}`).classList.add("active");
   },
   setSecondsLeft(number = 0) {
     const numHeight = this.secondsRight.firstElementChild.offsetHeight;
 
-    this.secondsLeft
-      .querySelector(`#seconds-left__${this.currentSL()}`)
-      .classList.remove("active");
+    this.secondsLeft.querySelector(`#seconds-left__${this.currentSL()}`).classList.remove("active");
 
     const update = (numHeight * 5) / 2 - numHeight * number;
     this.secondsLeft.style.transform = `translateY(${update}px)`;
     this.secondsLeft.dataset.currentnum = number;
 
-    this.secondsLeft
-      .querySelector(`#seconds-left__${number}`)
-      .classList.add("active");
+    this.secondsLeft.querySelector(`#seconds-left__${number}`).classList.add("active");
   },
   setSecondsRight(number = 0) {
     const numHeight = this.secondsRight.firstElementChild.offsetHeight;
@@ -72,9 +62,7 @@ const clock = {
     this.secondsRight.style.transform = `translateY(${update}px)`;
     this.secondsRight.dataset.currentnum = number;
 
-    this.secondsRight
-      .querySelector(`#seconds-right__${number}`)
-      .classList.add("active");
+    this.secondsRight.querySelector(`#seconds-right__${number}`).classList.add("active");
   },
   setTime(ML, MR, SL, SR) {
     this.setMinutesLeft(ML);
@@ -83,9 +71,7 @@ const clock = {
     this.setSecondsRight(SR);
   },
   countDown() {
-    const total =
-      this.currentSR() + this.currentSL() + this.currentMR() + this.currentML();
-
+    const total = this.currentSR() + this.currentSL() + this.currentMR() + this.currentML();
     if (total === 0) {
       new Audio("./beep.wav").play();
       return true;
@@ -112,7 +98,6 @@ const clock = {
   },
   addOneMinute() {
     const total = this.currentMR() + this.currentML();
-
     if (total === 14) return;
 
     const updatedMR = this.currentMR() >= 9 ? 0 : this.currentMR() + 1;
@@ -141,36 +126,23 @@ const clock = {
 const startTime = document.timeline.currentTime;
 
 window.onresize = function () {
-  clock.setTime(
-    clock.currentML(),
-    clock.currentMR(),
-    clock.currentSL(),
-    clock.currentSR()
-  );
+  clock.setTime(clock.currentML(), clock.currentMR(), clock.currentSL(), clock.currentSR());
 };
 
 window.onload = () => clock.setTime(0, 0, 0, 0);
 
-document
-  .getElementById("set__10")
-  .addEventListener("click", () => clock.setTime(1, 0, 0, 0));
+document.getElementById("set__10").addEventListener("click", () => clock.setTime(1, 0, 0, 0));
 
 document.getElementById("start").addEventListener("click", () => {
   clock.stop = false;
-  frame(startTime);
+  scheduleFrame(startTime);
 });
 
-document
-  .getElementById("plus-1")
-  .addEventListener("click", () => clock.addOneMinute());
+document.getElementById("plus-1").addEventListener("click", () => clock.addOneMinute());
 
-document
-  .getElementById("minus-1")
-  .addEventListener("click", () => clock.subtractOneMinute());
+document.getElementById("minus-1").addEventListener("click", () => clock.subtractOneMinute());
 
-document
-  .getElementById("stop")
-  .addEventListener("click", () => (clock.stop = true));
+document.getElementById("stop").addEventListener("click", () => (clock.stop = true));
 
 document.getElementById("reset").addEventListener("click", () => {
   clock.stop = true;
@@ -178,19 +150,17 @@ document.getElementById("reset").addEventListener("click", () => {
 });
 
 function frame(time) {
+  if (clock.stop) return (clock.stop = false);
+
+  if (clock.countDown()) return;
+
+  scheduleFrame(time);
+}
+
+function scheduleFrame(time) {
   const elapsed = time - startTime;
   const seconds = Math.round(elapsed / 1000);
-
-  if (clock.stop) return;
-
-  if (time && elapsed) {
-    const stop = clock.countDown();
-    if (stop) return;
-  }
-
-  const targetNext = (seconds + 1) * 1000 + startTime;
-  setTimeout(
-    () => requestAnimationFrame(frame),
-    targetNext - performance.now()
-  );
+  const target = (seconds + 1) * 1000 + startTime;
+  const delay = target - performance.now() > 0 ? target - performance.now() : 1000;
+  setTimeout(() => requestAnimationFrame(frame), delay);
 }
